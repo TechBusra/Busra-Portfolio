@@ -5,25 +5,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Portfolio</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css"> <!-- Your custom styles if needed -->
+    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                right: 0;
+                background-color: rgba(0, 0, 0, 0.8);
+                z-index: 10;
+                padding: 1rem;
+            }
+            .nav-links.active {
+                display: flex;
+            }
+        }
+    </style>
 </head>
 <body class="bg-gray-100">
 
-    <!-- Navigation -->
-    <nav class="bg-blue-500 p-4">
-        <div class="container mx-auto flex justify-between items-center">
-            <a href="#" class="text-white text-lg font-semibold">BUSRA KUCUK</a>
-            <ul class="flex space-x-4 text-white text-lg uppercase">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About Me</a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
+<nav class="bg-blue-500 p-4">
+    <div class="container mx-auto flex justify-between items-center">
+        <a href="#" class="text-white text-lg font-semibold lg:pl-2">BUSRA KUCUK</a>
+        <button id="menu-toggle" class="lg:hidden text-white text-2xl">
+            <i class="fas fa-bars"></i>
+        </button>
+        <ul class="lg:flex space-x-4 text-white text-lg uppercase hidden" id="nav-links">
+            <li><a href="#home" class="lg:pl-2">Home</a></li>
+            <li><a href="#about">About Me</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </div>
+</nav>
 
-    <!-- Hero Section -->
     <section id="home" class="bg-cover bg-center bg-fixed bg-no-repeat min-h-screen" style="background-image: url('images/hero-bg.jpg'); background-size: cover; background-position: center bottom;">
         <div class="container mx-auto text-center py-20">
             <h1 class="text-4xl font-semibold text-white mb-2">Busra KUCUK</h1>
@@ -32,13 +50,12 @@
             <a href="#portfolio" class="inline-block bg-blue-500 hover:bg-blue-600 text-white py-2 px-6 text-lg rounded-full transition duration-300 ease-in-out">View Portfolio</a>
         </div>
     </section>
-
-    <!-- About Me Section -->
-    <section id="about" class="bg-gradient-to-b from-blue-400 via-blue-500 to-blue-600 py-20 min-h-screen text-white">
-        <div class="container mx-auto text-center">
+    
+    <section id="about" class="bg-gradient-to-b from-blue-400 via-blue-500 to-blue-600 py-20 text-white">
+        <div class="container mx-auto text-center"> 
             <h2 class="text-3xl font-semibold mb-4">About Me</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="ml-32">
+            <div class="md:flex md:justify-center">
+                <div class="md:ml-8 mt-6 md:mt-0 text-left ml-4">
                     <p class="text-lg text-gray-200 mb-6">
                         Hi, I'm Busra, a front-end magician who brings digital dreams to life. With my keyboard as a wand, I craft web experiences that amaze and inspire.
                     </p>
@@ -50,17 +67,12 @@
                     </p>
                 </div>
                 <div>
-                    <!-- Replace the placeholder image URL with your image -->
-                    <img src="/images/coding.jpg" alt="Frontend Image" class="w-64 h-64 mx-auto rounded-full">
+                    <img src="/images/coding.jpg" alt="Frontend Image" class="w-full h-64 mx-auto rounded-full md:w-64 md:h-64">
                 </div>
             </div>
         </div>
     </section>
     
-    
-    
-
-    <!-- Portfolio Section -->
     <section id="portfolio" class="bg-gray-200 py-20">
         <div class="container mx-auto">
             <div class="text-center">
@@ -68,47 +80,58 @@
                 <p class="text-lg text-gray-600 mb-8">Check out some of my recent works.</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Work Card 1 -->
+    
                 <div class="bg-white rounded-lg shadow-md">
                     <img src="/images/project1.jpg" alt="Work N" class="w-full h-40 object-cover rounded-t-lg">
                     <div class="p-4">
                         <h3 class="text-xl font-semibold mb-2">Weather App</h3>
                         <p class="text-gray-600">A simple weather app to check current weather conditions by city.</p>
-                        <a href="https://github.com/TechBusra/weather-app" class="block mt-2 text-gray-500 hover:underline" target="_blank">GitHub Repository</a>
+                        <div class="mt-2 flex justify-between">
+                            <a href="https://github.com/TechBusra/weather-app" class="text-gray-500 hover:underline" target="_blank">GitHub Repository</a>
+                            <div class="w-4"></div>
+                            <a href="https://weather-app-zeta-lilac-48.vercel.app/" class="text-gray-500 hover:underline" target="_blank">Demo</a>
+                        </div>
                     </div>
                 </div>
+                
 
-                <!-- Work Card 2 -->
                 <div class="bg-white rounded-lg shadow-md">
                     <img src="/images/project2.jpg" alt="Work 2" class="w-full h-40 object-cover rounded-t-lg">
                     <div class="p-4">
                         <h3 class="text-xl font-semibold mb-2">Cookie Cafe</h3>
                         <p class="text-gray-600">A simple cafe website template for showcasing your delicious cookies and pastries.</p>
-                        <a href="https://github.com/TechBusra/cookie-cafe" class="block mt-2 text-gray-500 hover:underline" target="_blank">GitHub Repository</a>
-                    </div>
+                        <div class="mt-2 flex justify-between">
+                            <a href="https://github.com/TechBusra/cookie-cafe" class="text-gray-500 hover:underline" target="_blank">GitHub Repository</a>
+                            <div class="w-4"></div>
+                            <a href="https://cookie-cafe.vercel.app/" class="text-gray-500 hover:underline" target="_blank">Demo</a>
+                        </div>
+                    </div> 
                 </div>
+                
 
-                <!-- Work Card 3 -->
                 <div class="bg-white rounded-lg shadow-md">
                     <img src="/images/project3.jpg" alt="Work 3" class="w-full h-40 object-cover rounded-t-lg">
                     <div class="p-4">
                         <h3 class="text-xl font-semibold mb-2">To-do List</h3>
-                        <p class="text-gray-600">A simple to-do list web application built with HTML, JavaScript, and styled using Tailwind CSS.
-                        </p>
-                        <a href="https://github.com/TechBusra/to-do-list" class="block mt-2 text-gray-500 hover:underline" target="_blank">GitHub Repository</a> 
+                        <p class="text-gray-600">A simple to-do list web application built with HTML, JavaScript, and styled using Tailwind CSS.</p>
+                        <div class="mt-2 flex justify-between">
+                            <a href="https://github.com/TechBusra/to-do-list" class="text-gray-500 hover:underline" target="_blank">GitHub Repository</a>
+                            <div class="w-4"></div>
+                            <a href="https://to-do-list-phi-jet.vercel.app/" class="text-gray-500 hover:underline" target="_blank">Demo</a>
+                        </div>
                     </div>
                 </div>
+                
+                
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
     <section id="contact" class="bg-gray-900 text-white py-20">
         <div class="container mx-auto text-center">
             <h2 class="text-2xl font-semibold mb-8">Contact Me</h2>
             <p class="text-lg text-gray-400 mb-6">Have a project in mind or just want to say hi? Feel free to drop me a message.</p>
             
-            <!-- Contact Form -->
             <form id="contact-form" class="max-w-md mx-auto">
                 <div class="mb-4">
                     <input type="text" placeholder="Your Name" class="w-full py-2 px-4 rounded bg-gray-800 text-white" required>
@@ -124,7 +147,7 @@
                 </div>
             </form>
             
-            <!-- Social Media Links -->
+
             <div class="mt-8">
                 <p class="text-lg text-gray-400 mb-4">Connect with me on social media:</p>
                 <div class="flex justify-center space-x-4">
@@ -136,6 +159,6 @@
         </div>
     </section>
 
-    <script src="custom.js"></script> <!-- Your JavaScript file if needed -->
+    <script src="custom.js"></script> 
 </body>
 </html>
